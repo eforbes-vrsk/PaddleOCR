@@ -107,6 +107,7 @@ class TextRecognizer(object):
             return norm_img.astype(np.float32) / 128. - 1.
 
         assert imgC == img.shape[2]
+        max_wh_ratio = max(max_wh_ratio, imgW / imgH)
         if self.character_type=="ch":
             imgW = int((32 * max_wh_ratio))
         if self.use_onnx:
