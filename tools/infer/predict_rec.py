@@ -107,7 +107,8 @@ class TextRecognizer(object):
             return norm_img.astype(np.float32) / 128. - 1.
 
         assert imgC == img.shape[2]
-        imgW = int((32 * max_wh_ratio))
+        if self.character_type=="ch":
+            imgW = int((32 * max_wh_ratio))
         if self.use_onnx:
             w = self.input_tensor.shape[3:][0]
             if w is not None and w > 0:
